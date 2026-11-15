@@ -1,8 +1,0 @@
-cpu.v
-alu.v
-control.v
-data_mem.v
-imm_gen.v
-instr_mem.v
-pc_reg.v
-reg_file.v

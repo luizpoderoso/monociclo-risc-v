@@ -1,3 +1,11 @@
+`include "alu.v"
+`include "control.v"
+`include "data_mem.v"
+`include "imm_gen.v"
+`include "instr_mem.v"
+`include "pc_reg.v"
+`include "reg_file.v"
+
 module cpu(input clk, input rst);
     // ================== FIOS ==================
     // Instrução + PC
