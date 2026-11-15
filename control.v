@@ -15,7 +15,7 @@ module control(
         mem_write  = 1'b0;     // não pode escrever na memória
         alu_src    = 1'b0;     // src_b = write_data
         reg_write  = 1'b0;     // não pode escrever no reg
-        pc_src     = 2'b00;    // PC + 4
+        pc_src     = 2'b00;    // pc + 4
         result_src = 2'b00;    // result vem da ALU
         alu_ctrl   = 3'b000;   // soma
         imm_src    = 3'b000;   // tipo I
@@ -30,7 +30,13 @@ module control(
             7'b0010111: begin          // auipc
                 reg_write  = 1'b1;     // grava em rd
                 imm_src    = 3'b100;   // tipo U
-                result_src = 2'b11;    // PC + imm
+                result_src = 2'b11;    // pc + imm
+            end
+            7'b1101111: begin          // jal
+                reg_write  = 1'b1;     // grava em rd
+                imm_src    = 3'b011;   // tipo J
+                result_src = 2'b10;    // pc + 4
+                pc_src  = 2'b01;       // pc = pc + imm
             end
         endcase
     end

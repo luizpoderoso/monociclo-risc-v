@@ -19,10 +19,11 @@ module tb_cpu;
     // No meio de cada ciclo, mostra o que está sendo executado
     always @(negedge clk) begin
         if (!rst)
-            $display("PC=%h  instr=%h  | result=%0d | t0=%0d t1=%0d t2=%0d",
-                     dut.pc, dut.instr, $signed(dut.result),
-                     $signed(dut.REG_FILE.mem[5]),
-                     $signed(dut.REG_FILE.mem[6]),
-                     $signed(dut.REG_FILE.mem[7]));
+            $display("PC=%h  instr=%h  | result=%0d | ra=%0d t0=%0d t1=%0d t2=%0d",
+                dut.pc, dut.instr, $signed(dut.result),
+                $signed(dut.REG_FILE.mem[1]),
+                $signed(dut.REG_FILE.mem[5]),
+                $signed(dut.REG_FILE.mem[6]),
+                $signed(dut.REG_FILE.mem[7]));
     end
 endmodule
