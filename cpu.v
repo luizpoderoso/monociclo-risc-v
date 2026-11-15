@@ -11,4 +11,8 @@ module cpu(input clk, input rst);
     wire mem_write, alu_src, reg_write;
     wire [1:0] result_src, pc_src;
     wire [2:0] imm_src, alu_ctrl;
+
+    assign pc_plus4 = pc + 4;
+    assign pc_target = pc + imm_ext;
+    assign src_b = alu_src ? imm_ext : write_data;
 endmodule
