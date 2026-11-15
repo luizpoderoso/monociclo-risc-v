@@ -9,6 +9,6 @@ module control(
     output [1:0] pc_src,
     output [1:0] result_src,
     output [2:0] alu_ctrl,
-    output [2:0] imm_src 
+    output [2:0] imm_src
 );
 endmodule
