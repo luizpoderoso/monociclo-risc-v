@@ -31,16 +31,21 @@ module control(
                 else                   // shift
                     alu_ctrl = 3'b100;
             end
+            7'b0000011: begin          // lw
+                reg_write  = 1'b1;     // grava em rd
+                alu_src    = 1'b1;     // src_b = imediato
+                result_src = 2'b01;    // result vem da memória
+            end
             7'b0010111: begin          // auipc
                 reg_write  = 1'b1;     // grava em rd
                 imm_src    = 3'b100;   // tipo U
-                result_src = 2'b11;    // pc + imm
+                result_src = 2'b11;    // result = pc + imm
             end
             7'b1101111: begin          // jal
                 reg_write  = 1'b1;     // grava em rd
                 imm_src    = 3'b011;   // tipo J
-                result_src = 2'b10;    // pc + 4
-                pc_src  = 2'b01;       // pc = pc + imm
+                result_src = 2'b10;    // result = pc + 4
+                pc_src     = 2'b01;    // pc = pc + imm
             end
         endcase
     end
