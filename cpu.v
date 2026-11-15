@@ -39,6 +39,7 @@ module cpu(input clk, input rst);
 
     // ================== Datapath ==================
     pc_reg PC (
+        .clk(clk),
         .rst(rst),
         .pc_next(pc_next),
         .pc(pc)
@@ -46,7 +47,7 @@ module cpu(input clk, input rst);
 
     instr_mem I_MEM(
         .pc(pc),
-        .instr(instr),
+        .instr(instr)
     );
 
     control CTRL(
