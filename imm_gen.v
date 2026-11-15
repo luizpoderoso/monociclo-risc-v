@@ -5,7 +5,8 @@ module imm_gen(
 );
     always @(*) begin
         case (imm_src)
-            3'b000:  imm_ext = { {20{imm[24]}}, imm[24:13] };   // tipo I, 20 * bit de sinal concatenado com os demais bits
+            3'b000:  imm_ext = { {20{imm[24]}}, imm[24:13] };   // tipo I
+            3'b100: imm_ext = { imm[24:5], 12'b0 };   // tipo U
             default: imm_ext = 32'b0;
         endcase
     end

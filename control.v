@@ -27,6 +27,11 @@ module control(
                 imm_src   = 3'b000;    // tipo I
                 alu_ctrl  = 3'b000;    // soma
             end
+            7'b0010111: begin          // auipc
+                reg_write  = 1'b1;     // grava em rd
+                imm_src    = 3'b100;   // tipo U
+                result_src = 2'b11;    // PC + imm
+            end
         endcase
     end
 endmodule
