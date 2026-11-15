@@ -1,1 +1,2 @@
-cpu_sim
+*_sim
+*.vcd
