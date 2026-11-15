@@ -52,6 +52,9 @@ module control(
                 result_src = 2'b10;    // result = pc + 4
                 pc_src     = 2'b01;    // pc = pc + imm
             end
+            7'b0110011: begin          // add
+                reg_write = 1'b1;      // pode escrever no reg
+            end
         endcase
     end
 endmodule
