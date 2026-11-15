@@ -21,20 +21,25 @@ module control(
         imm_src    = 3'b000;   // tipo I
 
         case (op)
-            7'b0010011: begin          // addi
+            7'b0010011: begin          // addi e slli
                 reg_write = 1'b1;      // grava em rd
                 alu_src   = 1'b1;      // src_b = imediato
                 imm_src   = 3'b000;    // tipo I
                 
-                if (funct3 == 3'b000)  // soma
+                if (funct3 == 3'b000)  // addi
                     alu_ctrl  = 3'b000;
-                else                   // shift
+                else                   // slli
                     alu_ctrl = 3'b100;
             end
             7'b0000011: begin          // lw
                 reg_write  = 1'b1;     // grava em rd
                 alu_src    = 1'b1;     // src_b = imediato
                 result_src = 2'b01;    // result vem da memória
+            end
+            7'b0100011: begin          // sw
+                mem_write = 1'b1;      // pode escrever na memória
+                alu_src   = 1'b1;      // src_b = imediato
+                imm_src   = 3'b001;    // tipo S
             end
             7'b0010111: begin          // auipc
                 reg_write  = 1'b1;     // grava em rd

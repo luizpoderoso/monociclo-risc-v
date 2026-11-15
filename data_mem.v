@@ -12,4 +12,10 @@ module data_mem(
 
     // calcula-se a posição (11 bits) dividindo a distância por 4
     assign rd = mem[offset[12:2]];
+    
+    // escrita
+    always @(posedge clk) begin
+        if (we)
+            mem[offset[12:2]] <= wd;
+    end
 endmodule
