@@ -9,6 +9,6 @@ module cpu(input clk, input rst);
     wire [31:0] write_data, read_data, result;
     // Control
     wire mem_write, alu_src, reg_write;
-    wire [1:0] imm_src, result_src, pc_src;
-    wire [2:0] alu_ctrl;
+    wire [1:0] result_src, pc_src;
+    wire [2:0] imm_src, alu_ctrl;
 endmodule

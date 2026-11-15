@@ -1,0 +1,62 @@
+Address     Code        Basic                        Line Source
+
+0x00400000  0x00100d93  addi x27,x0,1                11   	li s11, 1
+0x00400004  0x0fc10417  auipc x8,0x0000fc10          12   	la s0, origem # base_origem
+0x00400008  0xffc40413  addi x8,x8,0xfffffffc             
+0x0040000c  0x00200493  addi x9,x0,2                 13   	li s1, 2 # i_topo_origem
+0x00400010  0x0fc10917  auipc x18,0x0000fc10         14   	la s2, destino # base_destino
+0x00400014  0xffc90913  addi x18,x18,0xfffffffc           
+0x00400018  0xfff00993  addi x19,x0,0xffffffff       15   	li s3, -1 # i_topo_destino
+0x0040001c  0x0fc10a17  auipc x20,0x0000fc10         16   	la s4, auxiliar # base_auxiliar
+0x00400020  0xffca0a13  addi x20,x20,0xfffffffc           
+0x00400024  0xfff00a93  addi x21,x0,0xffffffff       17   	li s5, -1 # i_topo_auxiliar
+0x00400028  0x00148b13  addi x22,x9,1                18   	addi s6, s1, 1 # n = número de discos
+0x0040002c  0x030000ef  jal x1,0x00000030            20   	jal hanoi
+0x00400030  0x00a00893  addi x17,x0,10               22   	li a7, 10
+0x00400034  0x00000073  ecall                        23   	ecall
+0x00400038  0x00249293  slli x5,x9,2                 27   	slli t0, s1, 2
+0x0040003c  0x005402b3  add x5,x8,x5                 28   	add t0, s0, t0
+0x00400040  0x0002a303  lw x6,0(x5)                  29   	lw t1, 0(t0)
+0x00400044  0xfff48493  addi x9,x9,0xffffffff        31   	addi s1, s1, -1
+0x00400048  0x00198993  addi x19,x19,1               34   	addi s3, s3, 1
+0x0040004c  0x00299293  slli x5,x19,2                35   	slli t0, s3, 2
+0x00400050  0x005902b3  add x5,x18,x5                36   	add t0, s2, t0
+0x00400054  0x0062a023  sw x6,0(x5)                  37   	sw t1, 0(t0)
+0x00400058  0x00008067  jalr x0,x1,0                 39   	ret
+0x0040005c  0xfdbb0ee3  beq x22,x27,0xffffffdc       42   	beq s6, s11, mover
+0x00400060  0xff810113  addi x2,x2,0xfffffff8        44   	addi sp, sp, -8
+0x00400064  0x01612023  sw x22,0(x2)                 45   	sw s6, 0(sp)
+0x00400068  0x00112223  sw x1,4(x2)                  46   	sw ra, 4(sp)
+0x0040006c  0x012002b3  add x5,x0,x18                48   	mv t0, s2
+0x00400070  0x01300333  add x6,x0,x19                49   	mv t1, s3
+0x00400074  0x01400933  add x18,x0,x20               50   	mv s2, s4
+0x00400078  0x015009b3  add x19,x0,x21               51   	mv s3, s5
+0x0040007c  0x00500a33  add x20,x0,x5                52   	mv s4, t0
+0x00400080  0x00600ab3  add x21,x0,x6                53   	mv s5, t1
+0x00400084  0xfffb0b13  addi x22,x22,0xffffffff      55   	addi s6, s6, -1
+0x00400088  0xfd5ff0ef  jal x1,0xffffffd4            57   	jal hanoi
+0x0040008c  0x012002b3  add x5,x0,x18                59   	mv t0, s2
+0x00400090  0x01300333  add x6,x0,x19                60   	mv t1, s3
+0x00400094  0x01400933  add x18,x0,x20               61   	mv s2, s4
+0x00400098  0x015009b3  add x19,x0,x21               62   	mv s3, s5
+0x0040009c  0x00500a33  add x20,x0,x5                63   	mv s4, t0
+0x004000a0  0x00600ab3  add x21,x0,x6                64   	mv s5, t1
+0x004000a4  0xf95ff0ef  jal x1,0xffffff94            66   	jal mover
+0x004000a8  0x008002b3  add x5,x0,x8                 68   	mv t0, s0
+0x004000ac  0x00900333  add x6,x0,x9                 69   	mv t1, s1
+0x004000b0  0x01400433  add x8,x0,x20                70   	mv s0, s4
+0x004000b4  0x015004b3  add x9,x0,x21                71   	mv s1, s5
+0x004000b8  0x00500a33  add x20,x0,x5                72   	mv s4, t0
+0x004000bc  0x00600ab3  add x21,x0,x6                73   	mv s5, t1
+0x004000c0  0x00012b03  lw x22,0(x2)                 75   	lw s6, 0(sp)
+0x004000c4  0xfffb0b13  addi x22,x22,0xffffffff      76   	addi s6, s6, -1
+0x004000c8  0xf95ff0ef  jal x1,0xffffff94            78   	jal hanoi
+0x004000cc  0x008002b3  add x5,x0,x8                 80   	mv t0, s0
+0x004000d0  0x00900333  add x6,x0,x9                 81   	mv t1, s1
+0x004000d4  0x01400433  add x8,x0,x20                82   	mv s0, s4
+0x004000d8  0x015004b3  add x9,x0,x21                83   	mv s1, s5
+0x004000dc  0x00500a33  add x20,x0,x5                84   	mv s4, t0
+0x004000e0  0x00600ab3  add x21,x0,x6                85   	mv s5, t1
+0x004000e4  0x00412083  lw x1,4(x2)                  87   	lw ra, 4(sp)
+0x004000e8  0x00810113  addi x2,x2,8                 88   	addi sp, sp, 8
+0x004000ec  0x00008067  jalr x0,x1,0                 90   	ret
