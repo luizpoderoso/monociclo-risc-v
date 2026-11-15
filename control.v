@@ -25,7 +25,11 @@ module control(
                 reg_write = 1'b1;      // grava em rd
                 alu_src   = 1'b1;      // src_b = imediato
                 imm_src   = 3'b000;    // tipo I
-                alu_ctrl  = 3'b000;    // soma
+                
+                if (funct3 == 3'b000)  // soma
+                    alu_ctrl  = 3'b000;
+                else                   // shift
+                    alu_ctrl = 3'b100;
             end
             7'b0010111: begin          // auipc
                 reg_write  = 1'b1;     // grava em rd
