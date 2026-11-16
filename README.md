@@ -1,6 +1,6 @@
 # Processador RISC-V Monociclo
 
-O projeto consiste em uma descrição em Verilog de um processador RISC-V monociclo voltado para resolver o problema recursivo da torre de hanói. O algoritmo em Assembly RISC-V pode ser encontrado em [algoritmo/hanoi.asm](algoritmo/hanoi.asm).
+O projeto consiste em uma descrição em Verilog de um processador RISC-V monociclo voltado para resolver o problema da Torre de Hanói de forma recursiva. O algoritmo em Assembly RISC-V pode ser encontrado em [algoritmo/hanoi.asm](algoritmo/hanoi.asm).
 
 ## Instruções implementadas
 
@@ -16,9 +16,9 @@ Apenas as instruções necessárias para rodar o algoritmo (com montagem feita a
 - add
 - beq
 
-## Sobre o problema
+## Sobre o problema da Torre de Hanói
 
-O problema da torre de hanói consiste em re-empilhar os discos de tamanhos diferentes da torre de origem na torre de destino, com a presença da torre auxiliar para ajudar nos movimentos. A única regra é que os discos maiores não podem ficar acima de discos menores.
+O problema da Torre de Hanói consiste em re-empilhar os discos de tamanhos diferentes da torre de origem na torre de destino, com a presença da torre auxiliar para ajudar nos movimentos. A principal regra é que os discos maiores não podem ficar acima de discos menores.
 
 ## Algoritmo
 
