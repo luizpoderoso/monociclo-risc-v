@@ -55,6 +55,11 @@ module control(
             7'b0110011: begin          // add
                 reg_write = 1'b1;      // pode escrever no reg
             end
+            7'b1100111: begin          // jalr
+                reg_write  = 1'b1;     // grava em rd
+                result_src = 2'b10;    // result = pc + 4
+                pc_src     = 2'b10;    // pc = pc + imm
+            end
         endcase
     end
 endmodule
