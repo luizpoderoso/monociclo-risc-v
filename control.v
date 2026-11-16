@@ -26,10 +26,8 @@ module control(
                 alu_src   = 1'b1;      // src_b = imediato
                 imm_src   = 3'b000;    // tipo I
                 
-                if (funct3 == 3'b000)  // addi
-                    alu_ctrl  = 3'b000;
-                else                   // slli
-                    alu_ctrl = 3'b100;
+                if (funct3 == 3'b001)  // slli
+                    alu_ctrl = 3'b100; // shift
             end
             7'b0000011: begin          // lw
                 reg_write  = 1'b1;     // grava em rd
@@ -59,6 +57,12 @@ module control(
                 reg_write  = 1'b1;     // grava em rd
                 result_src = 2'b10;    // result = pc + 4
                 pc_src     = 2'b10;    // pc = pc + imm
+            end
+            7'b1100011: begin          // beq
+                alu_ctrl  = 3'b001;    // subtração
+                imm_src   = 3'b010;    // tipo B
+                if (zero)              // se forem iguais
+                    pc_src = 2'b01;    // pc = pc_target
             end
         endcase
     end

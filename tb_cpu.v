@@ -14,7 +14,7 @@ module tb_cpu;
 
         #8 rst = 0;     // rst ativo na 1ª subida, então PC = 0
         
-        #130;
+        #200;
         $display("v[0]=%0d  v[2]=%0d  pilha(0x3ff8)=%0d",
             $signed(dut.D_MEM.mem[0]),
             $signed(dut.D_MEM.mem[2]),
